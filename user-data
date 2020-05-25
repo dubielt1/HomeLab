@@ -1,1 +1,45 @@
 #cloud-config
+
+# configure datasource
+datasource:
+  NoCloud:
+    meta-data:
+      instance-id: i-87018aed
+      local-hostname: provisionlab  
+
+disk_setup:
+  /dev/sda:
+    table_type: 'mbr'
+    layout:
+      - 100
+    overwrite: True
+
+# Add groups to the system
+# The following example adds the ubuntu group with members 'root' and 'sys'
+# and the empty group cloud-users.
+# groups:
+#   - ubuntu: [root,sys]
+#   - cloud-users
+
+# Add users to the system. Users are added after groups are added.
+users:
+#  - default
+  - name: provisioner
+    gecos: Foo B. Bar
+    primary_group: provisioner
+#    groups: users #none
+#    selinux_user: staff_u
+#    expiredate: 2012-09-01
+#    ssh_import_id: foobar
+    lock_passwd: false
+    passwd: $6$j212wezy$7H/1LT4f9/N3wpgNunhsIqtMj62OKiS3nyNwuizouQc3u7MbYCarYeAHWYPYb2FT.lbioDm2RrkJPb9BZMN1O/
+
+runcmd:
+ - [ ls, -l, / ]
+ - [ sh, -xc, "echo $(date) ': hello world!'" ]
+ - [ sh, -c, echo "=========hello world'=========" ]
+ - ls -l /root
+ # Note: Don't write files to /tmp from cloud-init use /run/somedir instead.
+ # Early boot environments can race systemd-tmpfiles-clean LP: #1707222.
+ - mkdir /run/mydir
+ - [ wget, "http://slashdot.org", -O, /run/mydir/index.html ]
