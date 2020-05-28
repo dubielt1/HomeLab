@@ -1,0 +1,12 @@
+#!ipxe
+
+dhcp
+
+set base-url http://releases.rancher.com/os/latest
+
+# rancher.state.autoformat=[/dev/sda] - does not install bootloader to disk
+# instead, install via ros install command
+# initrd=initrd is required for EFI boots, or else kernel will panic
+kernel ${base-url}/vmlinuz initrd=initrd rancher.state.dev=LABEL=RANCHER_STATE rancher.state.wait rancher.cloud_init.datasources=[tftp:192.168.1.1/cloud-config.yml]
+initrd ${base-url}/initrd
+boot
