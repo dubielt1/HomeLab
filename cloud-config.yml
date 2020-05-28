@@ -1,0 +1,18 @@
+#cloud-config
+#
+## Add users to the system. Users are added after groups are added.
+users:
+  - name: provisioner
+    groups: sudo, docker
+    # this user, ALL hosts=(runas ALL) nopasswd: ALL commands
+    # demo ALL=(ALL) NOPASSWD:ALL
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    lock_passwd: false #enables password login
+    passwd: $6$rounds=4096$CUhvp3pL.q90S5WG$oz.uTdP9K2XU7DwcGgqKsL1ARZ58wn.FRcs2q3gxuSckE8NBBR6MQRC3Zoett8y/bdzNSOf/z1q4Sdd8s0cNU0
+
+# does this need to be in a separate meta-data file?
+datasource:
+  NoCloud:
+    meta-data:
+      instance-id: 12345678
+      local-hostname: provisioner
