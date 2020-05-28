@@ -4,11 +4,11 @@ dhcp
 
 # pre-seed approach to baremetal
 initrd tftp://192.168.1.1/initrd.img
-chain tftp://192.168.1.1/vmlinuz auto preseed/url=tftp://192.168.1.1/preseed.cfg #ks=http://192.168.1.1/ks.cfg
+chain tftp://192.168.1.1/vmlinuz initrd=initrd.img auto priority=critical DEBIAN_FRONTEND=noninteractive preseed/url=tftp://192.168.1.1/preseed.cfg
 
 # kickstart approach to baremetal
 # initrd tftp://192.168.1.1/initrd.img
-# chain tftp://192.168.1.1/vmlinuz auto ks=http://192.168.1.1/ks.cfg
+# chain tftp://192.168.1.1/vmlinuz initrd=initrd.img auto priority=critical DEBIAN_FRONTEND=noninteractive ks=http://192.168.1.1/ks.cfg
 
 # could-init approach to baremetal - requires cloud image of the OS?
 # will pull user-data and meta-data from root of http://192.168.1.1/
