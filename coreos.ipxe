@@ -1,0 +1,11 @@
+#!ipxe
+
+set base-url https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/31.20200505.3.0/x86_64
+
+dhcp
+
+initrd ${base-url}/fedora-coreos-31.20200505.3.0-live-initramfs.x86_64.img
+
+kernel ${base-url}/fedora-coreos-31.20200505.3.0-live-kernel-x86_64 initrd=fedora-coreos-31.20200505.3.0-live-initramfs.x86_64.img ip=dhcp rd.neednet=1 console=tty0 console=ttyS0 coreos.inst.install_dev=/dev/sda coreos.inst.stream=stable coreos.inst.ignition_url=https://raw.githubusercontent.com/dubielt1/HomeLab/master/config.ign ignition.config.url=https://raw.githubusercontent.com/dubielt1/HomeLab/master/config.ign ignition.platform.id=metal ignition.firstboot
+
+boot
