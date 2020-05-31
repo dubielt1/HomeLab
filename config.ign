@@ -24,32 +24,4 @@
       }
     ]
   },
-  "storage": {
-    "disks": [
-      {
-        "device": "/dev/sda",
-        "partitions": [
-          {
-            "label": "swap",
-            "number": 1,
-            "sizeMiB": 2048,
-            "startMiB": 0,
-            "typeGuid": "0657fd6d-a4ab-43c4-84e5-0933c84b4f4f"
-          },
-          {
-            "label": "fcos"
-          }
-        ],
-        "wipeTable": true
-      }
-    ],
-    "filesystems": [
-      {
-        "device": "/dev/disk/by-partlabel/fcos",
-        "format": "ext4",
-        "path": "/",
-        "wipeFilesystem": true
-      }
-    ]
-  },
   "systemd": {}
