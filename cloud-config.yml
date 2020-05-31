@@ -8,7 +8,7 @@ users:
     # demo ALL=(ALL) NOPASSWD:ALL
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     lock_passwd: false #enables password login
-    passwd: $6$rounds=4096$CUhvp3pL.q90S5WG$oz.uTdP9K2XU7DwcGgqKsL1ARZ58wn.FRcs2q3gxuSckE8NBBR6MQRC3Zoett8y/bdzNSOf/z1q4Sdd8s0cNU0
+    passwd: $6$0OJY3T54Cv9j$AjwRVd0ajTBrrNLPDoI.4BddnYmDMewJG2ArqpLls3VgAqLSI2RiOd5pL8P2yn8h5RQhcqyuBgjRDXTV9EuQY/
 
 # does this need to be in a separate meta-data file?
 datasource:
